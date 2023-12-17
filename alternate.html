@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bouncing Ball Game</title>
+    <style>
+        #gameWindow {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            overflow: hidden;
+        }
+        .ball {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameWindow"></div>
+
+    <script>
+        var gameWindow = document.getElementById('gameWindow');
+        var balls = [];
+        function randomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        function createBall(x, y, vx, vy) {
+            var ball = document.createElement('div');
+            ball.className = 'ball';
+            ball.style.left = x + 'px';
+            ball.style.top = y + 'px';
+            ball.style.backgroundColor = randomColor();
+            gameWindow.appendChild(ball);
+
+            ball.vx = vx;
+            ball.vy = vy;
+
+            ball.addEventListener('click', function() {
+                gameWindow.removeChild(ball);
+                var index = balls.indexOf(ball);
+                balls.splice(index, 1);
+                createBall(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 2, 3);
+                createBall(Math.random() * window.innerWidth, Math.random() * window.innerHeight, -2, 3);
+            });
+
+            balls.push(ball);
+        }
+
+        function animate() {
+            balls.forEach(function(ball, index) {
+                var x = parseFloat(ball.style.left);
+                var y = parseFloat(ball.style.top);
+
+                if (y + ball.vy > window.innerHeight - 50 || y + ball.vy < 0) {
+                    ball.vy = -ball.vy;
+                }
+
+                if (x + ball.vx > window.innerWidth - 50 || x + ball.vx < 0) {
+                    ball.vx = -ball.vx;
+                }
+
+                ball.style.left = x + ball.vx + 'px';
+                ball.style.top = y + ball.vy + 'px';
+
+                balls.forEach(function(otherBall, otherIndex) {
+                    if (index != otherIndex) {
+                        var dx = x - parseFloat(otherBall.style.left);
+                        var dy = y - parseFloat(otherBall.style.top);
+                        var distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 50) {
+                            var overlap = 50 - distance;
+
+                            // Normalize the direction vector
+                            var dxNormalized = dx / distance;
+                            var dyNormalized = dy / distance;
+
+                            // Move the balls apart
+                            ball.style.left = (x + overlap / 2 * dxNormalized) + 'px';
+                            ball.style.top = (y + overlap / 2 * dyNormalized) + 'px';
+                            otherBall.style.left = (parseFloat(otherBall.style.left) - overlap / 2 * dxNormalized) + 'px';
+                            otherBall.style.top = (parseFloat(otherBall.style.top) - overlap / 2 * dyNormalized) + 'px';
+
+                            // Calculate restitution force
+                            var restitution = 0.2 * overlap;
+
+                            // Apply restitution force
+                            ball.vx += restitution * dxNormalized;
+                            ball.vy += restitution * dyNormalized;
+                            otherBall.vx -= restitution * dxNormalized;
+                            otherBall.vy -= restitution * dyNormalized;
+                        }
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        createBall(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 2, 3);
+        animate();
+    </script>
+</body>
+</html>
