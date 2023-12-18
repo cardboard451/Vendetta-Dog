@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lennox is Cool</title>
+    <link rel="styleSheet" href="buttons.css">
+    <style>
+
+      body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      margin: 0;
+      background-color: powderblue;
+      }
+
+      .pics
+      {
+        max-width: 100%;
+        height: 100vh;
+        object-fit: contain;
+        border-radius: 5%;
+        align-self: center;
+      }
+
+      .buttons{
+        padding-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+      <img class ="pics" src="picLen1.jpg">
+      <br>
+      <div class="buttons">
+        <button class = "picture-button" 
+          onclick="window.location.href='pictures.html'">Pictures</button>
+        <button class = "video-button"
+          onclick="window.location.href='videos.html'">Videos</button>
+        <button class = "games-button"
+        onclick="window.location.href='games.html'">Games</button>
+      </div>
+  </body>
+</html>
