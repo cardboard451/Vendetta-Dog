@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Match</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                background-color: white;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                height: 100vh;
+                width: 100vw;
+                padding: 0;
+                grid-gap: 0px;
+            }
+            .grid-item {
+                border: none;
+                border-radius: 50%;
+                overflow: hidden;
+                cursor: pointer;
+            }
+            
+            .grid-item img {
+                width: calc(100vw / 3);
+                height: calc(100vh / 2);
+                border: none;
+                border-radius: 50%;
+                overflow: hidden;
+                object-fit: fill;
+                box-shadow: 0,0,0,100px,black;
+            }
+            .grayscale {
+            filter: grayscale(100%);
+            }
+            </style>
+    </head>
+    <body>
+        <div class="grid"> </div>
+        <script>
+            function choice(image) {
+                this.image = image
+            }
+            const choices = [
+                {dog : new choice('dog.jpg')},
+                {cat : new choice('cat.jpg')},
+                {bird : new choice('bird.jpg')},
+                {fish : new choice('fish.jpg')},
+                {gator : new choice('gator.jpg')},
+                {cow : new choice('cow.jpg')}
+            ]
+
+           function startGame(){
+            choices.sort(() => Math.random() - 0.5);
+            const grid = document.querySelector('.grid');
+            // Select a random choice
+                const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+                const randomChoiceName = Object.keys(randomChoice)[0];
+
+                // Show an alert with the name of the choice
+                alert('Find the ' + randomChoiceName);
+
+                choices.forEach(choiceObj => {
+                    const key = Object.keys(choiceObj)[0];
+                    const choiceInstance = Object.values(choiceObj)[0];
+
+                    const gridItem = document.createElement('button');
+                    gridItem.className = 'grid-item';
+
+                    const img = document.createElement('img');
+                    img.src =  choiceInstance.image;
+                    img.alt = 'Image of ' + key;
+
+                    gridItem.appendChild(img);
+                    grid.appendChild(gridItem);
+
+                    gridItem.addEventListener('click', () => {
+                        if (key === randomChoiceName) {
+                            alert('You won!');
+                            grid.innerHTML = '';
+                            startGame();
+                        } else {
+                            img.classList.add('grayscale');
+                        }
+                                });
+                        });
+            }
+            startGame();
+        </script>
+    </body>
+</html>
