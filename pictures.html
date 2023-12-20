@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pictures</title>
+        <style>
+            .menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 20px;
+                height: 100vh;
+                width: 100vw;
+            }
+
+            .menu a {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                position: relative;
+            }
+
+            .menu img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+
+            .menu p {
+                margin-top: 10px;
+                font-weight: bold;
+                font-style: oblique;
+                font-size: 10vh;
+                text-decoration: none;
+                color: navy
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu">
+            <a href="picturesBirth.html">
+                <img src="picCoverBirth.jpg">
+                <p>First Days</p>
+            </a>
+            <a href="pictures0-6months.html">
+                <img src="picCover0-6months.jpg">
+                <p>0 to 6 Months</p>
+            </a>
+            <a href="pictures6-12months.html">
+                <img src="picCover6-12months.jpg">
+                <p>6 to 12 Months</p>
+            </a>
+            <a href="picturesBirthday.html">
+                <img src="picCoverBirthday.jpg">
+                <p>First Birthday</p>
+            </a>
+        </div>
+    </body>
+</html>
