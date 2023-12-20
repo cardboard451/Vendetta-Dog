@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Videos</title>
+        <style>
+            body{
+                background-color: powderblue;
+            }
+            .video-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                justify-items: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="video-grid" id="video-grid">
+            <!-- Videos will be inserted here by JavaScript -->
+        </div>
+
+        <script>
+            var videoGrid = document.getElementById('video-grid');
+
+            for (var i = 0; i < 23; i++) {
+                var video = document.createElement('video');
+                video.width = 320;
+                video.height = 240;
+                video.controls = true;
+
+                var source = document.createElement('source');
+                source.src = "vidLen" + i + ".mp4";
+                source.type = "video/mp4";
+
+                video.appendChild(source);
+                videoGrid.appendChild(video);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First Birthday</title>
+        <style>
+            body{
+                background-color: powderblue;
+            }
+           .menu {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                justify-items: center;
+                align-items: center;
+                height: 100vh;
+                width: 100%;
+            }
+            .menu a {
+                width: 100%;
+            }
+
+            .menu img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5%;
+            }
+            #fixed-image {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 300px; /* Adjust as needed */
+                height: 300px; /* Adjust as needed */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu" id="menu">
+            <!-- Images will be inserted here by JavaScript -->
+        </div>
+        <img id="fixed-image" src="ven1.png">
+        <script>
+            var menu = document.getElementById('menu');
+
+            for (var i = 1; i < 23; i++) {
+                var a = document.createElement('a');
+                a.href = "#";
+
+                // add title
+                /*var div = document.createElement('div');
+                div.className = "title";
+                div.textContent = "Title " + i;
+                */
+                
+
+                var img = document.createElement('img');
+                img.src = "lenbirthday_" + i + ".jpg";
+                img.onclick = function() {
+                    window.open(this.src, '_blank', 'height=600,width=800');
+                };
+                //add title
+                //a.appendChild(div);
+                a.appendChild(img);
+                menu.appendChild(a);
+            }
+        </script>
+    </body>
+</html>
