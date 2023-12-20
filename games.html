@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Games</title>
+        <style>
+            .menu {
+                display: grid;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                width: 100vw;
+                font-size: 5vh;
+                font-weight: bold;
+                font-style: oblique;
+                color: blue;
+            }
+
+            .game {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            img {
+                width: 100%;
+                height: 100vh;
+                object-fit: contain;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu">
+            <div class="game">
+                <p>Bounce</p>
+                <img class="bounce" src="bounce.jpg"
+                onclick="window.location.href='bounce.html'">
+            </div>
+            <div class="game">
+                <p>Match</p>
+                <img class="match" src="match.jpg"
+                onclick="window.location.href='match.html'">
+            </div>
+        </div>  
+    </body>
+</html>
