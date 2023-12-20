@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pictures</title>
+        <style>
+            body{
+                background-color: powderblue;
+            }
+            .menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 20px;
+                height: 100vh;
+                width: 100vw;
+            }
+
+            .menu a {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                position: relative;
+            }
+
+            .menu img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 5%;
+            }
+
+            .menu p {
+                margin-top: 10px;
+                font-weight: bold;
+                font-style: oblique;
+                font-family: cursive;
+                font-size: 10vh;
+                text-decoration: none;
+                color: navy
+            }
+            .album {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="menu">
+            <div class="album">
+                <img class="bounce" src="picCoverBirth.jpg"
+                onclick="window.location.href='picturesBirth.html'">
+                <p>First Days</p>
+            </div>
+            <div class="album">
+                <img class="match" src="picCover0-6months.jpg"
+                onclick="window.location.href='pictures0-6months.html'">
+                <p>0 to 6 Months</p>
+            </div>
+            <div class="album">
+                <img class="bounce" src="picCover6-12months.jpg"
+                onclick="window.location.href='pictures6-12months.html'">
+                <p>6 to 12 Months</p>
+            </div>
+            <div class="album">
+                <img class="match" src="picCoverBirthday.jpg"
+                onclick="window.location.href='picturesBirthday.html'">
+                <p>First Birthday</p>
+            </div>
+        </div>  
+    </body>
+</html>
