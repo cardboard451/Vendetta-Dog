@@ -11,8 +11,8 @@
         }
         .ball {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             background-color: red;
             border-radius: 50%;
         }
@@ -59,11 +59,11 @@
                 var x = parseFloat(ball.style.left);
                 var y = parseFloat(ball.style.top);
 
-                if (y + ball.vy > window.innerHeight - 50 || y + ball.vy < 0) {
+                if (y + ball.vy > window.innerHeight - 100 || y + ball.vy < 0) {
                     ball.vy = -ball.vy;
                 }
 
-                if (x + ball.vx > window.innerWidth - 50 || x + ball.vx < 0) {
+                if (x + ball.vx > window.innerWidth - 100 || x + ball.vx < 0) {
                     ball.vx = -ball.vx;
                 }
 
@@ -76,8 +76,8 @@
                         var dy = y - parseFloat(otherBall.style.top);
                         var distance = Math.sqrt(dx * dx + dy * dy);
 
-                        if (distance < 50) {
-                            var overlap = 50 - distance;
+                        if (distance < 100) {
+                            var overlap = 100 - distance;
 
                             // Normalize the direction vector
                             var dxNormalized = dx / distance;
